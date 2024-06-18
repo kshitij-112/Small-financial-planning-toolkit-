@@ -1,4 +1,4 @@
-# Small-financial-planning-toolkit-
+8# Small-financial-planning-toolkit-
 
 Developing a Simple Financial Planning Toolkit in Java with Mortgage Calculator, Investment Return Calculator, and Savings Goal Calculator involves several steps. Here’s a structured approach to get you started:
 
@@ -33,46 +33,44 @@ Ensure the calculators interact correctly with user inputs and display results a
 Example Code Snippets:
 Here are simplified snippets for each calculator:
 
-Mortgage Calculator:-
+Mortgage Calculator:- 
+
+
 public class MortgageCalculator {
     private double loanAmount;
     private double annualInterestRate;
     private int loanTermYears;
-
-    public MortgageCalculator(double loanAmount, double annualInterestRate, int loanTermYears) {
+public MortgageCalculator(double loanAmount, double annualInterestRate, int loanTermYears) {
         this.loanAmount = loanAmount;
         this.annualInterestRate = annualInterestRate;
         this.loanTermYears = loanTermYears;
     }
-
-    public double calculateMonthlyPayment() {
+public double calculateMonthlyPayment() {
         // Implement your mortgage payment calculation here
     }
-
-    public double calculateTotalPayments() {
+public double calculateTotalPayments() {
         // Implement total payments calculation
     }
-
-    public List<PaymentScheduleItem> generateAmortizationSchedule() {
+public List<PaymentScheduleItem> generateAmortizationSchedule() {
         // Implement amortization schedule generation
     }
 }
 
 
 
-Investment Return Calculator:-
+Investment Return Calculator:- 
+
+
 public class InvestmentCalculator {
     private double initialInvestment;
     private double annualInterestRate;
     private int investmentPeriodYears;
-
-    public InvestmentCalculator(double initialInvestment, double annualInterestRate, int investmentPeriodYears) {
+ public InvestmentCalculator(double initialInvestment, double annualInterestRate, int investmentPeriodYears) {
         this.initialInvestment = initialInvestment;
         this.annualInterestRate = annualInterestRate;
         this.investmentPeriodYears = investmentPeriodYears;
     }
-
-    public double calculateFutureValue() {
+ public double calculateFutureValue() {
         // Implement future value calculation
     }
 }
@@ -80,24 +78,23 @@ public class InvestmentCalculator {
 
 
 Savings Goal Calculator:-
+
+
 public class SavingsGoalCalculator {
     private double currentSavings;
     private double monthlyContribution;
     private double targetAmount;
     private double annualInterestRate;
-
-    public SavingsGoalCalculator(double currentSavings, double monthlyContribution, double targetAmount, double annualInterestRate) {
+public SavingsGoalCalculator(double currentSavings, double monthlyContribution, double targetAmount, double annualInterestRate) {
         this.currentSavings = currentSavings;
         this.monthlyContribution = monthlyContribution;
         this.targetAmount = targetAmount;
         this.annualInterestRate = annualInterestRate;
     }
-
-    public double calculateTimeToGoal() {
+ public double calculateTimeToGoal() {
         // Implement time to reach savings goal calculation
     }
-
-    public double calculateTotalContributionsNeeded() {
+public double calculateTotalContributionsNeeded() {
         // Implement total contributions needed calculation
     }
 }
