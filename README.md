@@ -32,3 +32,79 @@ Integrate the calculators into your chosen user interface (CLI/GUI).
 Ensure the calculators interact correctly with user inputs and display results accurately.
 Example Code Snippets:
 Here are simplified snippets for each calculator:
+
+Mortgage Calculator:-
+public class MortgageCalculator {
+    private double loanAmount;
+    private double annualInterestRate;
+    private int loanTermYears;
+
+    public MortgageCalculator(double loanAmount, double annualInterestRate, int loanTermYears) {
+        this.loanAmount = loanAmount;
+        this.annualInterestRate = annualInterestRate;
+        this.loanTermYears = loanTermYears;
+    }
+
+    public double calculateMonthlyPayment() {
+        // Implement your mortgage payment calculation here
+    }
+
+    public double calculateTotalPayments() {
+        // Implement total payments calculation
+    }
+
+    public List<PaymentScheduleItem> generateAmortizationSchedule() {
+        // Implement amortization schedule generation
+    }
+}
+
+
+
+Investment Return Calculator:-
+public class InvestmentCalculator {
+    private double initialInvestment;
+    private double annualInterestRate;
+    private int investmentPeriodYears;
+
+    public InvestmentCalculator(double initialInvestment, double annualInterestRate, int investmentPeriodYears) {
+        this.initialInvestment = initialInvestment;
+        this.annualInterestRate = annualInterestRate;
+        this.investmentPeriodYears = investmentPeriodYears;
+    }
+
+    public double calculateFutureValue() {
+        // Implement future value calculation
+    }
+}
+
+
+
+Savings Goal Calculator:-
+public class SavingsGoalCalculator {
+    private double currentSavings;
+    private double monthlyContribution;
+    private double targetAmount;
+    private double annualInterestRate;
+
+    public SavingsGoalCalculator(double currentSavings, double monthlyContribution, double targetAmount, double annualInterestRate) {
+        this.currentSavings = currentSavings;
+        this.monthlyContribution = monthlyContribution;
+        this.targetAmount = targetAmount;
+        this.annualInterestRate = annualInterestRate;
+    }
+
+    public double calculateTimeToGoal() {
+        // Implement time to reach savings goal calculation
+    }
+
+    public double calculateTotalContributionsNeeded() {
+        // Implement total contributions needed calculation
+    }
+}
+
+Additional Considerations:
+Input Validation: Ensure user inputs are validated to prevent errors.
+Error Handling: Implement robust error handling to manage unexpected scenarios.
+Formatting: Format output values appropriately (e.g., currency, decimal places).
+Documentation: Add comments to clarify the purpose and usage of classes and methods.
+By following these steps and adapting the code snippets to fit your requirements, you can create a functional Simple Financial Planning Toolkit in Java with the specified calculators.
