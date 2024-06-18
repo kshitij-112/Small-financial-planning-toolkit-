@@ -33,71 +33,171 @@ Ensure the calculators interact correctly with user inputs and display results a
 Example Code Snippets:
 Here are simplified snippets for each calculator:
 
-Mortgage Calculator:- 
+1. Mortgage Calculator
+Objective: Calculate the monthly mortgage payment based on loan amount, interest rate, and loan term.
 
+Steps:
+
+Create a class MortgageCalculator.
+Define instance variables for loan amount, interest rate, and loan term.
+Implement a method calculateMonthlyPayment() to compute the monthly mortgage payment using the formula provided earlier.
 
 public class MortgageCalculator {
     private double loanAmount;
     private double annualInterestRate;
     private int loanTermYears;
-public MortgageCalculator(double loanAmount, double annualInterestRate, int loanTermYears) {
+
+    public MortgageCalculator(double loanAmount, double annualInterestRate, int loanTermYears) {
         this.loanAmount = loanAmount;
         this.annualInterestRate = annualInterestRate;
         this.loanTermYears = loanTermYears;
     }
-public double calculateMonthlyPayment() {
-        // Implement your mortgage payment calculation here
+
+    public double calculateMonthlyPayment() {
+        double monthlyInterestRate = annualInterestRate / 12 / 100; // Monthly interest rate
+        int loanTermMonths = loanTermYears * 12; // Loan term in months
+        
+        double monthlyPayment = loanAmount * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, loanTermMonths)) 
+                                / (Math.pow(1 + monthlyInterestRate, loanTermMonths) - 1);
+        
+        return monthlyPayment;
     }
-public double calculateTotalPayments() {
-        // Implement total payments calculation
-    }
-public List<PaymentScheduleItem> generateAmortizationSchedule() {
-        // Implement amortization schedule generation
-    }
+
+    // Getters and setters if needed
 }
 
 
 
-Investment Return Calculator:- 
+2. Investment Return Calculator
+Objective: Calculate the future value of an investment based on initial investment, expected rate of return, and investment time horizon.
 
+Steps:
+
+Create a class InvestmentCalculator.
+Define instance variables for initial investment, annual rate of return, and investment time horizon.
+Implement a method calculateFutureValue() to compute the future value using the formula provided earlier.
 
 public class InvestmentCalculator {
     private double initialInvestment;
-    private double annualInterestRate;
-    private int investmentPeriodYears;
- public InvestmentCalculator(double initialInvestment, double annualInterestRate, int investmentPeriodYears) {
+    private double annualReturnRate;
+    private int investmentYears;
+
+    public InvestmentCalculator(double initialInvestment, double annualReturnRate, int investmentYears) {
         this.initialInvestment = initialInvestment;
-        this.annualInterestRate = annualInterestRate;
-        this.investmentPeriodYears = investmentPeriodYears;
+        this.annualReturnRate = annualReturnRate;
+        this.investmentYears = investmentYears;
     }
- public double calculateFutureValue() {
-        // Implement future value calculation
+
+    public double calculateFutureValue() {
+        double monthlyReturnRate = annualReturnRate / 100 / 12; // Monthly return rate
+        int investmentMonths = investmentYears * 12; // Investment period in months
+        
+        double futureValue = initialInvestment * Math.pow(1 + monthlyReturnRate, investmentMonths);
+        
+        return futureValue;
     }
+
+    // Getters and setters if needed
 }
 
 
+3. Savings Goal Calculator
+Objective: Calculate the monthly savings required to reach a savings goal within a specified time frame, considering an expected rate of return.
 
-Savings Goal Calculator:-
+Steps:
 
+Create a class SavingsGoalCalculator.
+Define instance variables for savings goal amount, annual rate of return, and time frame.
+Implement a method calculateMonthlySavings() to compute the monthly savings needed using the formula provided earlier.
 
 public class SavingsGoalCalculator {
-    private double currentSavings;
-    private double monthlyContribution;
-    private double targetAmount;
-    private double annualInterestRate;
-public SavingsGoalCalculator(double currentSavings, double monthlyContribution, double targetAmount, double annualInterestRate) {
-        this.currentSavings = currentSavings;
-        this.monthlyContribution = monthlyContribution;
-        this.targetAmount = targetAmount;
-        this.annualInterestRate = annualInterestRate;
+    private double savingsGoal;
+    private double annualReturnRate;
+    private int yearsToGoal;
+
+    public SavingsGoalCalculator(double savingsGoal, double annualReturnRate, int yearsToGoal) {
+        this.savingsGoal = savingsGoal;
+        this.annualReturnRate = annualReturnRate;
+        this.yearsToGoal = yearsToGoal;
     }
- public double calculateTimeToGoal() {
-        // Implement time to reach savings goal calculation
+
+    public double calculateMonthlySavings() {
+        double monthlyReturnRate = annualReturnRate / 100 / 12; // Monthly return rate
+        int monthsToGoal = yearsToGoal * 12; // Time frame in months
+        
+        double monthlySavings = (savingsGoal - 0) / ((Math.pow(1 + monthlyReturnRate, monthsToGoal) - 1) / monthlyReturnRate);
+        
+        return monthlySavings;
     }
-public double calculateTotalContributionsNeeded() {
-        // Implement total contributions needed calculation
+
+    // Getters and setters if needed
+}
+
+
+Main Application (Toolkit Integration)
+Objective: Create a main application to integrate all calculators and provide a user interface (CLI).
+
+import java.util.Scanner;
+
+public class FinancialPlanningToolkit {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Mortgage Calculator
+        System.out.println("=== Mortgage Calculator ===");
+        System.out.print("Enter loan amount: ");
+        double loanAmount = scanner.nextDouble();
+
+        System.out.print("Enter annual interest rate (%): ");
+        double annualInterestRate = scanner.nextDouble();
+
+        System.out.print("Enter loan term (years): ");
+        int loanTermYears = scanner.nextInt();
+
+        MortgageCalculator mortgageCalculator = new MortgageCalculator(loanAmount, annualInterestRate, loanTermYears);
+        double monthlyPayment = mortgageCalculator.calculateMonthlyPayment();
+        System.out.printf("Monthly mortgage payment: $%.2f%n", monthlyPayment);
+
+        // Investment Return Calculator
+        System.out.println("\n=== Investment Return Calculator ===");
+        System.out.print("Enter initial investment amount: ");
+        double initialInvestment = scanner.nextDouble();
+
+        System.out.print("Enter annual return rate (%): ");
+        double annualReturnRate = scanner.nextDouble();
+
+        System.out.print("Enter investment time horizon (years): ");
+        int investmentYears = scanner.nextInt();
+
+        InvestmentCalculator investmentCalculator = new InvestmentCalculator(initialInvestment, annualReturnRate, investmentYears);
+        double futureValue = investmentCalculator.calculateFutureValue();
+        System.out.printf("Future value of investment: $%.2f%n", futureValue);
+
+        // Savings Goal Calculator
+        System.out.println("\n=== Savings Goal Calculator ===");
+        System.out.print("Enter savings goal amount: ");
+        double savingsGoal = scanner.nextDouble();
+
+        System.out.print("Enter annual return rate (%): ");
+        double annualReturnRateGoal = scanner.nextDouble();
+
+        System.out.print("Enter time frame to reach goal (years): ");
+        int yearsToGoal = scanner.nextInt();
+
+        SavingsGoalCalculator savingsGoalCalculator = new SavingsGoalCalculator(savingsGoal, annualReturnRateGoal, yearsToGoal);
+        double monthlySavings = savingsGoalCalculator.calculateMonthlySavings();
+        System.out.printf("Monthly savings required: $%.2f%n", monthlySavings);
+
+        scanner.close();
     }
 }
+
+Notes:
+Each calculator (MortgageCalculator, InvestmentCalculator, SavingsGoalCalculator) is implemented as a separate class, encapsulating its logic and calculations.
+The main application (FinancialPlanningToolkit) integrates all calculators, allowing users to interactively input data and obtain results for each calculator.
+Ensure to handle input validation and edge cases (e.g., non-positive inputs) appropriately in a real-world scenario.
+This structure provides a clear and modular approach to implementing the Financial Planning Toolkit in JAVA, fulfilling the project requirements effectively.
 
 Additional Considerations:
 Input Validation: Ensure user inputs are validated to prevent errors.
